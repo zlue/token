@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>远盾油品汇</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<script type="text/javascript">
+		let android_url = 'http://api.cnjla.com/upload/app/yguan1-4-1.apk';
+		let ios_url = 'itms-services://?action=download-manifest&url=https://github.com/zlue/token/blob/master/manifest.plist';
+
+		download();
+
+		function download() {
+			let u = navigator.userAgent;
+			if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+				window.location.href = android_url; 
+			}
+		    if (!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+				window.location.href = ios_url;
+			}
+			let isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); 
+			if (u.toLowerCase().match(/MicroMessenger/i)=="micromessenger") { // 微信
+				alert("请点击右上角按钮, 点击使用浏览器打开");
+			}
+			if (isPC()) {
+				alert("请用手机浏览器打开");
+			}
+		}
+		function isPC() {
+			let userAgent = navigator.userAgent;
+			let Agents = ["Android", "iPhone","SymbianOS", "Windows Phone","iPad", "iPod"];
+			let flag = true;
+			for (let i = 0; i < Agents.length; i++) {
+				if (userAgent.indexOf(Agents[i]) > 0) {
+					flag = false;
+					break;
+				}
+			}
+			return flag;
+		}
+	</script>
+</body>
+</html>
